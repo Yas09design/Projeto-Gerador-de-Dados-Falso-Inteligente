@@ -1,4 +1,4 @@
-workflows/gerador_dados.yml
+
 name: Gerador de Dados Automatizado
 
 # Gatilho: Inicia a automação a cada alteração no branch principal
