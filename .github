@@ -1,0 +1,37 @@
+workflows/gerador_dados.yml
+name: Gerador de Dados Automatizado
+
+# Gatilho: Inicia a automação a cada alteração no branch principal
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  gerar_e_publicar_dados:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 1. Checkout do Código
+        uses: actions/checkout@v4
+        
+      - name: 2. Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: 3. Instalar Dependências (Faker, Pandas, Jupyter)
+        run: pip install -r requirements.txt
+        
+      # Esta linha executa seu Notebook e gera o arquivo de saída
+      - name: 4. Executar Notebook Gerador
+        # **CONFIRA**: Certifique-se que o nome do Notebook está idêntico!
+        run: jupyter nbconvert --to script Automação_gerando_dados_com_Faker.ipynb --execute
+        
+      # Publica o arquivo gerado como artefato que você pode baixar
+      - name: 5. Publicar Arquivo de Dados Gerado (Artefato)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dados-para-teste-automatizados
+          # **CONFIRA**: Mantenha o nome do arquivo que seu Notebook gera!
+          path: dados_para_teste.csv
