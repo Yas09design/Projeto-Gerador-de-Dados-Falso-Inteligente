@@ -25,8 +25,8 @@ jobs:
         
       # Executa o Notebook e gera o arquivo de saída
       - name: 4. Executar Notebook Gerador
-        # Nome do Notebook idêntico
-        run: jupyter nbconvert --to script Automação_gerando_dados_com_Faker.ipynb --execute
+      # Nome do Notebook idêntico
+        run: jupyter nbconvert --to script Automacao_gerando_dados_com_Faker.ipynb --execute
         
       # Publica o arquivo gerado como artefato baixável
       - name: 5. Publicar Arquivo de Dados Gerado (Artefato)
