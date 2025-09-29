@@ -1,6 +1,6 @@
 
-faker (para gerar os dados)
+faker
+pandas 
+jupyter 
+nbconvert 
 
-pandas (para a manipulação e futura inteligência dos dados)
-
-jupyter e nbconvert (para executar seu Notebook .ipynb no servidor)
